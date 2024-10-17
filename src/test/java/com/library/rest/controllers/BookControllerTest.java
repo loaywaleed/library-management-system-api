@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-@WebMvcTest(controllers = ApiControllers.class)
+@WebMvcTest(controllers = BookController.class)
 public class BookControllerTest {
 
     @Autowired
