@@ -1,11 +1,12 @@
-package com.library.rest.Controllers;
+package com.library.rest.controllers;
+
 import com.library.rest.Exceptions.ResourceNotFoundException;
-import com.library.rest.Models.Book;
+import com.library.rest.models.Book;
 import com.library.rest.Repo.BookRepo;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
