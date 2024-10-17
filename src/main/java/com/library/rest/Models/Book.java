@@ -1,6 +1,8 @@
 package com.library.rest.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -9,15 +11,22 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Title cannot be null")
+    @Size(min = 1, max = 80, message = "Title must be between 1 and 80 characters")
     @Column
     private String title;
 
+    @NotNull(message = "Author cannot be null")
+    @Size(min = 1, max = 80, message = "Author must be between 1 and 80 characters")
     @Column
     private String author;
 
+    @NotNull(message = "ISBN cannot be null")
+    @Size(min = 1, max = 13, message = "ISBN must be between 10 and 13 characters")
     @Column
     private String isbn;
 
+    @NotNull(message = "Publication Year cannot be null")
     @Column
     private int publicationYear;
 
@@ -26,12 +35,12 @@ public class Book {
     }
 
     // Constructor with parameters
-//    public Book(String title, String author, String isbn, int publicationYear) {
-//        this.title = title;
-//        this.author = author;
-//        this.isbn = isbn;
-//        this.publicationYear = publicationYear;
-//    }
+    public Book(String title, String author, String isbn, int publicationYear) {
+        this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.publicationYear = publicationYear;
+    }
 
     // Getters and Setters
     public Long getId() {

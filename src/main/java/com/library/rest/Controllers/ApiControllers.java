@@ -1,10 +1,11 @@
 package com.library.rest.Controllers;
+import com.library.rest.Exceptions.ResourceNotFoundException;
 import com.library.rest.Models.Book;
 import com.library.rest.Repo.BookRepo;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -24,28 +25,29 @@ public class ApiControllers {
     }
 
     @PostMapping(value = "/books")
-    public Book addBook(@RequestBody Book book) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Book addBook(@Valid @RequestBody Book book) {
         return bookRepo.save(book);
     }
 
-    @GetMapping(value = "/books/{id}")
+    @GetMapping(value ="/books/{id}")
     public Book getBookById(@PathVariable long id) {
-        return bookRepo.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found with id: " + id));
+        return bookRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
     }
 
-    @DeleteMapping(value = "/books/{id}")
-    public String deleteBookById(@PathVariable long id) {
-        Book bookToDelete = bookRepo.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found with id: " + id));
-        bookRepo.delete(bookToDelete);
-        return "book deleted";
+    @DeleteMapping(value ="/books/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBookById(@PathVariable long id) {
+        Book book = bookRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
+        bookRepo.delete(book);
     }
 
     @PutMapping(value = "/books/{id}")
     public Book updateBookById(@PathVariable long id, @RequestBody Book book) {
-        Book bookToUpdate = bookRepo.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Book not found with id: " + id));
+        Book bookToUpdate = bookRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
         bookToUpdate.setTitle(book.getTitle());
         bookToUpdate.setAuthor(book.getAuthor());
         bookToUpdate.setIsbn(book.getIsbn());
