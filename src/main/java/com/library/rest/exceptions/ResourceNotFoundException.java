@@ -1,4 +1,4 @@
-package com.library.rest.Exceptions;
+package com.library.rest.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String resourceName, String fieldName, Object fieldValue) {

@@ -1,4 +1,4 @@
-package com.library.rest.Exceptions;
+package com.library.rest.exceptions;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.http.HttpStatus;

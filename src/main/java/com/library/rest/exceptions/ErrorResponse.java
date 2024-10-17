@@ -1,4 +1,4 @@
-package com.library.rest.Exceptions;
+package com.library.rest.exceptions;
 
 
 public class ErrorResponse {

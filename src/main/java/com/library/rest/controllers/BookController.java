@@ -1,9 +1,9 @@
 package com.library.rest.controllers;
 
-import com.library.rest.Exceptions.ConflictException;
-import com.library.rest.Exceptions.ResourceNotFoundException;
+import com.library.rest.exceptions.ConflictException;
+import com.library.rest.exceptions.ResourceNotFoundException;
 import com.library.rest.models.Book;
-import com.library.rest.Repo.BookRepo;
+import com.library.rest.repo.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

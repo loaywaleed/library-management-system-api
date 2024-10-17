@@ -1,7 +1,7 @@
 package com.library.rest.controllers;
 
 import com.library.rest.models.Book;
-import com.library.rest.Repo.BookRepo;
+import com.library.rest.repo.BookRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

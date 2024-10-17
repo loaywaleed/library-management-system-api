@@ -1,4 +1,4 @@
-package com.library.rest.Repo;
+package com.library.rest.repo;
 
 import com.library.rest.models.Patron;
 import org.springframework.data.jpa.repository.JpaRepository;
