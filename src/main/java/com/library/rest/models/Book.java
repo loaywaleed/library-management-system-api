@@ -1,4 +1,4 @@
-package com.library.rest.Models;
+package com.library.rest.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
