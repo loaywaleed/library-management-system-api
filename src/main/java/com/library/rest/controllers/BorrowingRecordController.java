@@ -9,6 +9,7 @@ import com.library.rest.models.Patron;
 import com.library.rest.repo.BookRepo;
 import com.library.rest.repo.BorrowingRecordRepo;
 import com.library.rest.repo.PatronRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class BorrowingRecordController {
     private BorrowingRecordRepo borrowingRecordRepo;
 
     // Create a new borrowing record
+    @Transactional
     @PostMapping("/borrow/{bookId}/patrons/{patronId}")
     public ResponseEntity<BorrowingRecord> borrowBook(
             @PathVariable Long bookId,
