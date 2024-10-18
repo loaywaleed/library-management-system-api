@@ -22,15 +22,12 @@ public class BorrowingRecord {
     @JoinColumn(nullable = false)
     private Book book;
 
-    @NotNull
-    @Column(nullable = false)
+    @Column()
     private Date borrowDate;
 
-    @NotNull
     @Column()
     private Date returnDate;
 
-    @NotNull
     @Column()
     private String status;
 

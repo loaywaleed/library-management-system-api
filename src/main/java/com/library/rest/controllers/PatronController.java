@@ -21,7 +21,7 @@ public class PatronController {
 
 
     @GetMapping(value = "/patrons")
-    public List<Patron> getBooks() {
+    public List<Patron> getPatron() {
         return patronRepo.findAll();
     }
 
@@ -37,14 +37,14 @@ public class PatronController {
 
 
     @GetMapping(value ="/patrons/{id}")
-    public Patron getBookById(@PathVariable long id) {
+    public Patron getPatronById(@PathVariable long id) {
         return patronRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
     }
 
     @DeleteMapping(value ="/patrons/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBookById(@PathVariable long id) {
+    public void deletePatronById(@PathVariable long id) {
         Patron book = patronRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book", "id", id));
         patronRepo.delete(book);
@@ -59,15 +59,4 @@ public class PatronController {
         patronToUpdate.setPhone(patron.getPhone());
         return patronRepo.save(patronToUpdate);
     }
-
-//    private boolean resourceAlreadyExists(Resource resource) {
-//        // Logic to check if resource exists
-//        return false;
-//    }
-//
-//    private Resource findResourceById(Long id) {
-//        // Logic to find resource by ID
-//        return null; // Replace with actual resource retrieval
-//    }
-
 }
